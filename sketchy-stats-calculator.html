@@ -1,0 +1,31 @@
+!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Stats Calculator</title>
+  <meta name="description" content="Stats Calculator">
+  <meta name="author" content="Josh">
+
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <script type="text/javascript">
+    var result = 0;
+    var rank = 1;
+    var suit = 0;
+    var numCards = 5
+    for (x = 1; x < numCards; x++) {
+      result += 1 - (51 - (4 * (rank - 1) + suit) - 2 * x) / (51 - 2 * x)
+    }
+
+    alert(result);
+  </script>
+</body>
+</html>
