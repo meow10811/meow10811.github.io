@@ -1,0 +1,28 @@
+<script src="https://mcapi.us/scripts/minecraft.js"></script>
+    <div>
+        <img id="favicon"></img> </br>
+        This <span class="server-version"></span> server is "<span class="server-motd"></span>" </br>
+        Status: Currently <span class="server-online"></span> with <span class="players"></span> </br>
+        Last updated: <span class="update-time"></span>
+    </div>
+
+    <script>
+      MinecraftAPI.getServerStatus('mc.joshl.in', function (err, status) {
+        if (err) {
+          return document.querySelector('.server-status').innerHTML = 'Error loading status';
+        }
+
+        // you can change these to your own message!
+        document.querySelector('.server-online').innerHTML = status.online ? 'up' : 'down';
+
+        document.querySelector('.server-version').innerHTML = status.server.name;
+
+        document.querySelector('.server-motd').innerHTML = status.motd;
+
+        document.querySelector('.players').innerHTML = status.players.now + "/" + status.players.max + " players";
+
+        document.querySelector('.update-time').innerHTML = new Date(parseInt(status.last_updated) * 1000).toLocaleString();
+
+        document.querySelector('.favicon').innerHTML = document.getElementById('favicon').src = status.favicon;
+      });
+    </script>
